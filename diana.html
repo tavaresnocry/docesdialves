@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doceria di Alves</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fff0f3, #ffe5ec);
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+}
+
+nav h1 {
+    color: #ff4d6d;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url("img/doce.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    max-width: 500px;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+}
+
+.hero p {
+    margin: 15px 0;
+}
+
+.hero button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+}
+
+/* PRODUTOS */
+.produtos {
+    padding: 50px 20px;
+}
+
+.produtos h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff4d6d;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card .info {
+    padding: 15px;
+}
+
+.card h3 {
+    color: #ff4d6d;
+}
+
+.card button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+}
+
+/* WHATS FLOAT */
+.whats {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>🍰 Doceria di Alves</h1>
+</nav>
+
+<section class="hero">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h2>Doces que encantam 🍫</h2>
+        <p>Brigadeiros, bolos de pote, copos da felicidade e muito mais!</p>
+        <button onclick="comprar('Quero ver o cardápio')">Fazer Pedido</button>
+    </div>
+</section>
+
+<section class="produtos">
+    <h2>Nossos Produtos</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://i.ytimg.com/vi/aX384FauHPg/maxresdefault.jpg">
+            <div class="info">
+                <h3>Brigadeiros</h3>
+                <p>Gourmet e irresistíveis</p>
+                <button onclick="comprar('Brigadeiros')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpRq0b_OW7J0CNMbfdySk7UH0hJRD2uHaFJQ&s">
+            <div class="info">
+                <h3>Bolo de Pote</h3>
+                <p>Bolo de Pote - Maracujá
+                    Bolo de Pote - Chocolate
+                    Bolo de Pote - Côco
+                </p>
+                <button onclick="comprar('Bolo de Pote')">Comprar</button>
+            </div>
+        </div>
+
+       <section class="hero">
+    <div class="overlay"></div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_9p_XALS10rHnkWYSydfWX3JAEuPkMWvWqQ&s">
+            <div class="info">
+                <h3>Salgados + Refri</h3>
+                <p>Combo completo</p>
+                <button onclick="comprar('Salgados + Refri')">Comprar</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<a class="whats" onclick="comprar('Olá! Quero fazer um pedido')">💬</a>
+
+<footer>
+    <p>© 2026 Doceria di Alves</p>
+</footer>
+
+<script>
+function comprar(produto) {
+    let numero = "5511999867708"; // COLOCA O NÚMERO REAL
+    let mensagem = `Olá! ${produto}`;
+    let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
